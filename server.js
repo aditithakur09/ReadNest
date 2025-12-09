@@ -17,6 +17,10 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));   // for images
 
+app.get("/", (req, res) => {
+  res.send("Backend is working!");
+});
+
 // API ROUTES
 app.use("/api/auth", authRoutes);   // login signup
 app.use("/api/books", bookRoutes);  // sell-book
