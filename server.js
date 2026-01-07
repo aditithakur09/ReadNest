@@ -33,14 +33,14 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-require("dotenv").config(); // local ke liye (Railway me ignore hota hai)
+require("dotenv").config();
 
 // DB connection
 require("./config/db");
 
 // Routes
 const authRoutes = require("./routes/loginRoutes");
-const bookRoutes = require("./routes/sellRoutes");
+// const bookRoutes = require("./routes/sellRoutes");
 
 const app = express();
 
@@ -48,7 +48,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
+// app.use("/uploads", express.static("uploads"));
 
 // Health check / root route (Railway ke liye useful)
 app.get("/", (req, res) => {
@@ -57,7 +57,7 @@ app.get("/", (req, res) => {
 
 // API routes
 app.use("/api/auth", authRoutes);
-app.use("/api/books", bookRoutes);
+// app.use("/api/books", bookRoutes);
 
 // 🚀 START SERVER (IMPORTANT)
 const PORT = process.env.PORT || 3000;
